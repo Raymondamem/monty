@@ -49,6 +49,7 @@ typedef struct data_s
 } data_t;
 
 void (*select_instruction(char *opcode))(stack_t**, unsigned int);
+void free_stack(stack_t*);
 void run_instruction(data_t*, stack_t**);
 void push(data_t*, stack_t**);
 void pall(stack_t**, unsigned int);

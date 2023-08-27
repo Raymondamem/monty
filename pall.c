@@ -8,12 +8,12 @@
  * @line_number: current line number
  * Return: void
 */
-void pall(stack_t** stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
 	UNUSED(line_number);
-	while (temp->next != NULL)
+	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;

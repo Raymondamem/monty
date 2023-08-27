@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 
 /**
  * check_file - check argument count
@@ -53,9 +52,10 @@ int main(int argc, char **argv)
 		data.line_number++;
 		if (line[0] == '\n')
 			continue;
-		if (sscanf(line, "%s %d", data.opcode, &data.operand) == 2)
+		if (sscanf(line, "%s %d", data.opcode, &data.operand) >= 1)
 			run_instruction(&data, &main_stack);
 	}
+	free_stack(main_stack);
 	fclose(file);
 	return (0);
 }
