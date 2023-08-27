@@ -12,6 +12,7 @@ void (*select_instruction(char *opcode))(stack_t **, unsigned int)
 	int i = 0;
 	instruction_t instructions[] = {
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
