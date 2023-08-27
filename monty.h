@@ -40,7 +40,8 @@ typedef struct instruction_s
  * @line_number: current line number
  * @opcode: the opcode
  * @argument: the argument
- * 
+ * @file: File object
+ *
  * Description: data passed to functions
 */
 typedef struct data_s
@@ -53,7 +54,7 @@ typedef struct data_s
 
 int is_int(char *str);
 void (*select_instruction(char *opcode))(stack_t**, unsigned int);
-void free_stack(stack_t*);
+void free_stack(stack_t *);
 void run_instruction(data_t*, stack_t**);
 void push(data_t*, stack_t**);
 void pall(stack_t**, unsigned int);

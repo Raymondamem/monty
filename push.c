@@ -12,16 +12,17 @@ void push(data_t *data, stack_t **stack)
 {
 	stack_t *new_stack = malloc(sizeof(stack_t));
 
-	if (!is_int(data->argument))
+	if (new_stack == NULL)
 	{
-		fprintf(stderr, "L%d:usage: push integer\n", data->line_number);
+		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(*stack);
 		fclose(data->file);
 		exit(EXIT_FAILURE);
 	}
-	if (new_stack == NULL)
+	if (!is_int(data->argument))
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "L%d:usage: push integer\n", data->line_number);
+		free(new_stack);
 		free_stack(*stack);
 		fclose(data->file);
 		exit(EXIT_FAILURE);

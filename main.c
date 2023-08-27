@@ -18,12 +18,6 @@ void check_file(int argc)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	/* filename_len = strlen(argv[1]);
-	if (argv[1][filename_len - 2] != '.' || argv[1][filename_len - 1] != 'm')
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	} */
 }
 
 /**
