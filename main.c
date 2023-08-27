@@ -1,7 +1,7 @@
 #include "monty.h"
 #include <stdlib.h>
 #include <stdio.h>
-/* #include <string.h> */
+#include <string.h>
 
 /**
  * check_file - check argument count
@@ -46,6 +46,8 @@ int main(int argc, char **argv)
 			continue;
 		if (sscanf(line, "%s %s", data.opcode, data.argument) >= 1)
 			run_instruction(&data, &main_stack);
+		strcpy(data.opcode, "\0");
+		strcpy(data.argument, "\0");
 	}
 	free_stack(main_stack);
 	fclose(data.file);
