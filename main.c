@@ -34,27 +34,26 @@ void check_file(int argc)
 */
 int main(int argc, char **argv)
 {
-	FILE *file;
 	char line[100];
-	data_t data = { 0, "\0", 0 };
+	data_t data = { 0, "\0", "\0", NULL };
 	stack_t *main_stack = NULL;
 
 	check_file(argc);
-	file = fopen(argv[1], "r");
-	if (!file)
+	data.file = fopen(argv[1], "r");
+	if (!data.file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (fgets(line, sizeof(line), file))
+	while (fgets(line, sizeof(line), data.file))
 	{
 		data.line_number++;
 		if (line[0] == '\n')
 			continue;
-		if (sscanf(line, "%s %d", data.opcode, &data.operand) >= 1)
+		if (sscanf(line, "%s %s", data.opcode, data.argument) >= 1)
 			run_instruction(&data, &main_stack);
 	}
 	free_stack(main_stack);
-	fclose(file);
+	fclose(data.file);
 	return (0);
 }

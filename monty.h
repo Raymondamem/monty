@@ -1,6 +1,8 @@
 #ifndef __MONTY_H__
 #define __MONTY_H__
 
+#include <stdio.h>
+
 #define UNUSED(x) (void)(x)
 
 /**
@@ -37,7 +39,7 @@ typedef struct instruction_s
  * struct data_s - hold data passed to functions
  * @line_number: current line number
  * @opcode: the opcode
- * @operand: the operand
+ * @argument: the argument
  * 
  * Description: data passed to functions
 */
@@ -45,9 +47,11 @@ typedef struct data_s
 {
 	int line_number;
 	char opcode[10];
-	int operand;
+	char argument[10];
+	FILE *file;
 } data_t;
 
+int is_int(char *str);
 void (*select_instruction(char *opcode))(stack_t**, unsigned int);
 void free_stack(stack_t*);
 void run_instruction(data_t*, stack_t**);

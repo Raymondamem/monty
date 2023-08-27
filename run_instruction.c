@@ -23,6 +23,8 @@ void run_instruction(data_t *data, stack_t **main_stack)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",
 		data->line_number, data->opcode);
+		free_stack(*main_stack);
+		fclose(data->file);
 		exit(EXIT_FAILURE);
 	}
 	instruction(main_stack, data->line_number);
