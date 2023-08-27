@@ -1,30 +1,29 @@
 #include "monty.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+/* #include <string.h> */
 
 /**
  * check_file - check argument count
  * and file extension
  * @argc: argument count
- * @argv: argument list
  * Return: void
 */
-void check_file(int argc, char **argv)
+void check_file(int argc)
 {
-	int filename_len;
+	/* int filename_len; */
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	filename_len = strlen(argv[1]);
+	/* filename_len = strlen(argv[1]);
 	if (argv[1][filename_len - 2] != '.' || argv[1][filename_len - 1] != 'm')
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
-	}
+	} */
 }
 
 /**
@@ -40,7 +39,7 @@ int main(int argc, char **argv)
 	data_t data = { 0, "\0", 0 };
 	stack_t *main_stack = NULL;
 
-	check_file(argc, argv);
+	check_file(argc);
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
