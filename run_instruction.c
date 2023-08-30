@@ -18,6 +18,8 @@ void run_instruction(data_t *data, stack_t **main_stack)
 		push(data, main_stack);
 		return;
 	}
+	if (strcmp(data->opcode, "nop") == 0)
+		return;
 	instruction = select_instruction(data->opcode);
 	if (instruction == NULL)
 	{
